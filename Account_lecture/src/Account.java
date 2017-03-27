@@ -1,6 +1,10 @@
 
-public class Account {
+public abstract class Account {
 	private double balance;
+	
+	public double getBalance(){
+		return this.balance;
+	}
 	public Account(double initialbalance){
 		balance=initialbalance;
 	}
@@ -15,4 +19,8 @@ public class Account {
 			System.out.println("Debit amount exceeded account balance.");
 		}
 	}
+	
+	public abstract double getWithdrawableAccount();
+	
+	public abstract double passTime(int time);
 }
