@@ -1,6 +1,6 @@
 
-public abstract class Account {
-	private double balance;
+public abstract class Account implements Valuable {
+	protected double balance;
 	
 	public double getBalance(){
 		return this.balance;

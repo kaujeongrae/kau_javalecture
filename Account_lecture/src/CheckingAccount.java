@@ -1,48 +1,58 @@
 
-public class CheckingAccount extends Account{
-	public class CheckingAccount{
-		private double credit_limit;
+public class CheckingAccount extends Account {
+		private double creditlimit;
 		private double interest;
-		private double loan_interest;
+		private double loaninterest;
 		
 		public CheckingAccount(double balance, double limit, double interest, double loanInterest){
 			super(balance);
-			credit_limit=limit;
+			this.creditlimit=limit;
 			this.interest=interest;
-			this.loan_interest=loanInterest;
+			this.loaninterest=loanInterest;
 		}
 		
 		public void Nextmonth(){
 			if(balance>0){
 				balance=balance*(1+interest);
 			}else{
-				balance=balance*(1+loanInterest);
+				balance=balance*(1+loaninterest);
 			}
 		}
 		
 		@Override
 		public void debit(double money){
-			if(balance-money>=credit_Limit){
+			if(balance-money>=creditlimit){
 				balance=balance-money;
 			}else{
 				System.out.println("오류가 발생하였습니다");
 			}
 		}
 		
-		@override
+		@Override
 		public double getWithdrawableAccount(){
-			return balance;
-		}
-		
-		double passTime(int time){
-			return balance*(1+interest)^time-balance;
-		}
-		
-		boolean isBankrupted(){
-			if(balance>credit_limit)
-				return true;
+			if(isBankrupted())
+				return 0;
 			else
-				return false;
+				return balance+creditlimit;
 		}
+		
+		public double passTime(int time){
+			return balance*Math.pow((1+interest), time)-balance;
+		}
+		//Math.pow((1+interest), month)
+		public boolean isBankrupted(){
+			return balance <-creditlimit;
+			
+		
+		}
+		
+		public String toString(){
+			return String.format("CheckingAccount_Balance: %f",balance);
+		}
+		
+		public double estimateValue(int month){
+			return balance+balance*Math.pow((1+interest), month);
+		}
+		//Math.pow((1+interest), month)
 	}
-}
+
