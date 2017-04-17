@@ -11,16 +11,12 @@ public abstract class Account implements Valuable {
 	public void credit(double money){
 		balance+=money;
 	}
-	public void debit(double money){
-		if(balance>money){
+	public void debit(double money) throws Exception{
 			balance-=money;
-		}
-		else{
-			System.out.println("Debit amount exceeded account balance.");
-		}
 	}
 	
 	public abstract double getWithdrawableAccount();
 	
+	public abstract double passTime();
 	public abstract double passTime(int time);
 }

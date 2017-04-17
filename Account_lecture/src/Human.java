@@ -9,9 +9,12 @@ public class Human implements Valuable{
 	}
 	
 	public String toString(){
-		return String.format("Human name: %s\n registered age: %f",name,age);
+		return String.format("Human name: %s\n registered age: %d",name,age);
 	}
 	
+	public double estimateValue(){
+		return Double.POSITIVE_INFINITY;
+	}
 	public double estimateValue(int month){
 		return Double.POSITIVE_INFINITY;
 	}

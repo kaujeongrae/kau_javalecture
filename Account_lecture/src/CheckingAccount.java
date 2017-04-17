@@ -20,7 +20,7 @@ public class CheckingAccount extends Account {
 		}
 		
 		@Override
-		public void debit(double money){
+		public void debit(double money) throws Exception{
 			if(balance-money>=creditlimit){
 				balance=balance-money;
 			}else{
@@ -34,6 +34,10 @@ public class CheckingAccount extends Account {
 				return 0;
 			else
 				return balance+creditlimit;
+		}
+		
+		public double passTime(){
+			return balance*Math.pow((1+interest), 1)-balance;
 		}
 		
 		public double passTime(int time){
@@ -50,8 +54,12 @@ public class CheckingAccount extends Account {
 			return String.format("CheckingAccount_Balance: %f",balance);
 		}
 		
+		public double estimateValue(){
+			return balance*Math.pow((1+interest), 1);
+		}
+		
 		public double estimateValue(int month){
-			return balance+balance*Math.pow((1+interest), month);
+			return balance*Math.pow((1+interest), month);
 		}
 		//Math.pow((1+interest), month)
 	}
