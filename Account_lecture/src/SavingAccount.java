@@ -28,6 +28,8 @@ public class SavingAccount extends Account {
 			return balance;
 		if(month<12&&this.month+month>=12){
 			balance=balance*Math.pow((1+interest), 12);
+		} else if(month>=12){
+			balance=balance*Math.pow((1+interest), 12);
 		}
 		this.month=month;
 		return balance;

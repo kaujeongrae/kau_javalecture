@@ -37,13 +37,14 @@ public class CheckingAccount extends Account {
 		}
 		
 		public double passTime(){
-			return balance*Math.pow((1+interest), 1)-balance;
+			return balance*Math.pow((1+interest), 1);
 		}
 		
+		@Override
 		public double passTime(int time){
-			return balance*Math.pow((1+interest), time)-balance;
+			return balance*Math.pow((1+interest), time);
 		}
-		//Math.pow((1+interest), month)
+		
 		public boolean isBankrupted(){
 			return balance <-creditlimit;
 			

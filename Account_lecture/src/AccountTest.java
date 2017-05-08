@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -18,6 +19,20 @@ public class AccountTest {
 		objectList[2] = new Human("Mark", 20);
 		objectList[3] = new Car("MyCar", 5000);
 		
+		Account account1 = new CheckingAccount(100,50,0.01,0.07);
+		Account account2 = new SavingAccount(100,0.05);
+		CheckingAccount c_account1 = (CheckingAccount)account1;
+		
+		ArrayList<Account> accountList=new ArrayList<Account>();
+		accountList.add(account1);
+		accountList.add(account2);
+		
+		System.out.println("전체 계좌의 잔액 합산 : "+Account.sumForAccount(accountList));
+		
+		System.out.println("전체 계좌의 12개월 후 적용");
+		Account.passTimeForList(accountList, 12);
+		System.out.println("전체 계좌의 잔액 합산 : "+Account.sumForAccount(accountList));
+		
 		for(Valuable objectItem : objectList){
 			System.out.printf("%s \n", objectItem.toString());
 			System.out.printf("1 month later Value (Method Overloding, no parameter) : %.2f\n", objectItem.estimateValue());
@@ -30,9 +45,6 @@ public class AccountTest {
 		 * 변수명 및 메소드명 외 다른 부분은 절대 수정하지 마세요.
 		 */
 		
-		Account account1 = new CheckingAccount(100,50,0.01,0.07);
-		Account account2 = new SavingAccount(100,0.05);
-		CheckingAccount c_account1 = (CheckingAccount)account1;
 		
 		int cmd;
 		do{
